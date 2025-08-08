@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { FieldBase } from "@progress/sitefinity-adminapp-sdk/app/api/v1";
 
 /**
- * The component used to display the MedportalSessionalDateDropdown field in write mode.
+ * The component used to display the SessionalDateDropdown field in write mode.
  */
 @Component({
     selector: 'medportal-sessionaldate-dropdown-write',
@@ -25,16 +25,16 @@ export class MedportalSessionalDateDropdownWriteComponent extends FieldBase impl
             const dataItem = (this as any)._settings.dataItem.data;
             const cohort = dataItem.Parent.Cohort;
 
-            console.log('MedportalSessionalDateDropdown - DataItem:', dataItem);
+            console.log('SessionalDateDropdown - DataItem:', dataItem);
 
             if (cohort) {
                 this.loadOptions(cohort);
             } else {
-                console.error('MedportalSessionalDateDropdown - No cohort found');
+                console.error('SessionalDateDropdown - No cohort found');
                 this.isLoading = false;
             }
         } catch (error) {
-            console.error('MedportalSessionalDateDropdown - Error accessing cohort:', error);
+            console.error('SessionalDateDropdown - Error accessing cohort:', error);
             this.isLoading = false;
         }
     }
@@ -42,11 +42,11 @@ export class MedportalSessionalDateDropdownWriteComponent extends FieldBase impl
     private loadOptions(cohort: string): void {
         const apiUrl = `/RestApi/sessional-dates/${cohort}/titles`;
         
-        console.log('MedportalSessionalDateDropdown - Loading options from:', apiUrl);
+        console.log('SessionalDateDropdown - Loading options from:', apiUrl);
 
         this.http.get<any>(apiUrl).subscribe({
             next: (response) => {
-                console.log('MedportalSessionalDateDropdown - API Response:', response);
+                console.log('SessionalDateDropdown - API Response:', response);
                 
                 // Process API response inline
                 if (Array.isArray(response)) {
@@ -58,15 +58,15 @@ export class MedportalSessionalDateDropdownWriteComponent extends FieldBase impl
                         return option;
                     });
                 } else {
-                    console.warn('MedportalSessionalDateDropdown - Expected array response, got:', response);
+                    console.warn('SessionalDateDropdown - Expected array response, got:', response);
                     this.options = [];
                 }
 
-                console.log('MedportalSessionalDateDropdown - Final processed options:', this.options);
+                console.log('SessionalDateDropdown - Final processed options:', this.options);
                 this.isLoading = false;
             },
             error: (error) => {
-                console.error('MedportalSessionalDateDropdown - API Error:', error);
+                console.error('SessionalDateDropdown - API Error:', error);
                 this.hasError = true;
                 this.isLoading = false;
             }

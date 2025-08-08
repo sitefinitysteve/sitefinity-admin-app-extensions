@@ -7,12 +7,7 @@ export default (
     const mainBundlePath = config.entry["main"];
 
     config.entry = {
-        "medportal.extensions.": mainBundlePath
-    };
-
-    config.output = {
-        ...config.output,
-        filename: "medportal.extensions.[contenthash].js"
+        "sample.extensions.bundle": mainBundlePath
     };
 
     config.plugins.push(
