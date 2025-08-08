@@ -1,0 +1,24 @@
+<div class="medportal-sessionaldate-dropdown">
+    <div *ngIf="hasError" class="error-indicator" style="color: red; margin-bottom: 5px;">
+        Error loading options.
+    </div>
+    
+    <div class="sf-select">
+        <select
+            [name]="settings.key"
+            class="sf-select__item"
+            [(ngModel)]="value"
+            (blur)="onBlur()"
+            (focus)="onFocus()"
+            [disabled]="isLoading"
+            [attr.aria-label]="'Select ' + (settings.key || 'option')">
+            <option value="">-- Select an option --</option>
+            <option *ngFor="let option of options" [value]="option.value">
+                {{ option.text }}
+            </option>
+        </select>
+    </div>
+    <small *ngIf="isLoading" class="text-muted" style="display: block; margin-top: 3px; color: #666;">
+        Fetching options for cohort...
+    </small>
+</div>

@@ -1,6 +1,6 @@
 import { SitefinityExtensionStore } from "@progress/sitefinity-adminapp-sdk/app/api/v1";
 
-import { CustomFieldsModule } from "../samples/custom-fields";
+import { MedportalCustomFieldsModule } from "./custom-fields/index";
 
 import { GridExtenderModule } from "../samples/grid-extender";
 import { CommandsExtenderModule } from "../samples/commands-extender";
@@ -16,7 +16,7 @@ import { LibraryExtenderModule } from "../samples/library-extender";
 declare const sitefinityExtensionsStore: SitefinityExtensionStore;
 
 // sitefinityExtensionsStore.addExtensionModule(GridExtenderModule);
-sitefinityExtensionsStore.addExtensionModule(CustomFieldsModule);
+sitefinityExtensionsStore.addExtensionModule(MedportalCustomFieldsModule);
 // sitefinityExtensionsStore.addExtensionModule(CommandsExtenderModule);
 // sitefinityExtensionsStore.addExtensionModule(EditorExtenderModule);
 // sitefinityExtensionsStore.addExtensionModule(ItemExtenderModule);
